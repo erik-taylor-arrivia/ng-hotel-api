@@ -1,0 +1,16 @@
+<h1>Hotel Search</h1>
+<form>
+  <input
+    type="text"
+    [(ngModel)]="placeName"
+    name="place"
+    autocomplete="off"
+    (keyup)="handlePlaceInput()"
+  />
+  <input type="date" [(ngModel)]="depatureDate" name="deptDate" />
+  <input type="date" [(ngModel)]="arrivalDate" name="arrDate" />
+  <button type="submit">Search</button>
+  <div *ngFor="let place of placesResult">
+    <p>{{ place.placeLongName }}</p>
+  </div>
+</form>
