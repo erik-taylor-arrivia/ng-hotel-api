@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchList } from 'src/app/interfaces/search-list';
-import { SearchListService } from 'src/app/services/search-list.service';
+import { GeoSearchService } from 'src/app/services/geosearch.service';
 
 @Component({
   selector: 'app-search-form',
@@ -12,17 +12,21 @@ export class SearchFormComponent implements OnInit {
   depatureDate: string = '';
   arrivalDate: string = '';
   placesResult?: SearchList[];
+  loading: boolean = false;
 
-  constructor(private searchListService: SearchListService) {}
+  constructor(private geosearchService: GeoSearchService) {}
 
   ngOnInit(): void {}
 
   handlePlaceInput(): void {
-    this.searchListService.geoSearch(this.placeName).subscribe(
+    this.loading = true;
+    this.geosearchService.geoSearch(this.placeName).subscribe(
       (resp: any) => {
         this.placesResult = resp.places;
+        this.loading = false;
       },
       (error) => {
+        this.loading = false;
         alert(error);
         debugger;
       }

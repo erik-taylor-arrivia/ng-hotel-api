@@ -8,6 +8,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { SearchLoaderComponent } from './components/search-loader/search-loader.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SearchLoaderComponent } from './components/search-loader/search-loader.
     SearchListComponent,
     SearchResultsComponent,
     SearchLoaderComponent,
+    LoaderComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],

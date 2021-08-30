@@ -5,7 +5,7 @@ import { SearchList } from '../interfaces/search-list';
 @Injectable({
   providedIn: 'root',
 })
-export class SearchListService {
+export class GeoSearchService {
   constructor(private http: HttpClient) {}
   geoSearch(place: string) {
     const url = `https://geoservices-wa-dev-usw2.azurewebsites.net/api/v1/places/suggestions/${place}`;
