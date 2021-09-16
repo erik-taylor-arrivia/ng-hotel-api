@@ -13,10 +13,15 @@ export class SearchFormComponent implements OnInit {
   arrivalDate: string = '';
   placesResult?: SearchList[];
   loading: boolean = false;
+  place: any = null;
 
   constructor(private geosearchService: GeoSearchService) {}
 
   ngOnInit(): void {}
+
+  searchHotels(): any {
+    // call search service
+  }
 
   handlePlaceInput(): void {
     this.loading = true;
@@ -33,7 +38,10 @@ export class SearchFormComponent implements OnInit {
     );
   }
 
-  handlePlaceClick(): void {
-    // Handle place click and lat/long
+  handlePlaceClick(place: any): void {
+    this.place = place;
+    this.placesResult = [];
+    this.placeName = this.place.placeLongName;
+    console.log(place);
   }
 }

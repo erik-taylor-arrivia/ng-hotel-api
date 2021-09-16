@@ -2,16 +2,20 @@
 <form>
   <input
     type="text"
+    id="placeName"
     [(ngModel)]="placeName"
     name="place"
     autocomplete="off"
     (keyup)="handlePlaceInput()"
+    required
   />
-  <input type="date" [(ngModel)]="depatureDate" name="deptDate" />
-  <input type="date" [(ngModel)]="arrivalDate" name="arrDate" />
-  <button type="submit">Search</button>
+  <input type="date" [(ngModel)]="depatureDate" name="deptDate" required />
+  <input type="date" [(ngModel)]="arrivalDate" name="arrDate" required />
+  <button type="submit" [disabled]="placeName && arrivalDate && depatureDate">
+    Search
+  </button>
   <div *ngFor="let place of placesResult">
-    <p>{{ place.placeLongName }}</p>
+    <a href="#" (click)="handlePlaceClick(place)">{{ place.placeLongName }}</a>
   </div>
 </form>
 <div *ngIf="loading"><app-loader></app-loader></div>
